@@ -1,5 +1,6 @@
 package com.skilldataexporter;
 
+import net.runelite.client.RuneLite;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -15,7 +16,7 @@ public interface SkillDataExporterConfig extends Config
     )
     default String outputDirectory()
     {
-        return System.getProperty("user.home");
+        return RuneLite.RUNELITE_DIR.getAbsolutePath();
     }
 
     @ConfigItem(
