@@ -37,7 +37,7 @@ public interface SkillDataExporterConfig extends Config
     @ConfigItem(
             keyName = "includeTimestamp",
             name = "Include Timestamp",
-            description = "Include timestamp in the filename (skill_levels_YYYY-MM-DD.csv)",
+            description = "Include timestamp in the filename (skill_levels_YYYY-MM-DD_HH-mm-ss.csv)",
             position = 3
     )
     default boolean includeTimestamp() {
