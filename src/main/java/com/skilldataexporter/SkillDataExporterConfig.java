@@ -5,6 +5,9 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
+import java.io.File;
+import java.nio.file.Paths;
+
 @ConfigGroup("skilldataexporter")
 public interface SkillDataExporterConfig extends Config
 {
@@ -16,7 +19,7 @@ public interface SkillDataExporterConfig extends Config
     )
     default String outputDirectory()
     {
-        return RuneLite.RUNELITE_DIR.getAbsolutePath();
+        return Paths.get(RuneLite.RUNELITE_DIR.getAbsolutePath(), "skill_data_exporter").toString() + File.separator;
     }
 
     @ConfigItem(
