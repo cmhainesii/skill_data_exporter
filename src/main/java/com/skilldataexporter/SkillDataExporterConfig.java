@@ -22,21 +22,13 @@ public interface SkillDataExporterConfig extends Config
         return Paths.get(RuneLite.RUNELITE_DIR.getAbsolutePath(), "skill_data_exporter").toString() + File.separator;
     }
 
-    @ConfigItem(
-            keyName = "fileName",
-            name = "File Name",
-            description = "The name of the CSV file (without extension)",
-            position = 2
-    )
-    default String fileName() {
-        return "skill_levels";
-    }
+
 
     @ConfigItem(
             keyName = "includeXP",
             name = "Include XP Values",
             description = "Include XP values in the CSV file",
-            position = 3
+            position = 2
     )
     default boolean includeXP() {
         return true;
@@ -46,7 +38,7 @@ public interface SkillDataExporterConfig extends Config
             keyName = "includeTimestamp",
             name = "Include Timestamp",
             description = "Include timestamp in the filename (skill_levels_YYYY-MM-DD.csv)",
-            position = 4
+            position = 3
     )
     default boolean includeTimestamp() {
         return true;

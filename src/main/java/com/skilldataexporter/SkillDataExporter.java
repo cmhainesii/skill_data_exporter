@@ -46,6 +46,8 @@ public class SkillDataExporter extends Plugin
 	@Inject
 	private ConfigManager configManager;
 
+	private static final String defaultFileName = "skill_levels";
+
 	@Subscribe
 	public void onCommandExecuted(CommandExecuted commandExecuted)
 	{
@@ -102,6 +104,7 @@ public class SkillDataExporter extends Plugin
 
 	private void exportPlayerStats()
 	{
+
 		clientThread.invoke(() -> {
 			if (client.getLocalPlayer() == null)
 			{
@@ -109,8 +112,8 @@ public class SkillDataExporter extends Plugin
 				return;
 			}
 
+			String fileName = defaultFileName;
 			String playerName = client.getLocalPlayer().getName();
-			String fileName = config.fileName();
 
 			if (config.includeTimestamp())
 			{
