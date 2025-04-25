@@ -21,7 +21,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -75,25 +74,21 @@ public class SkillDataExporter extends Plugin
 			writer.write(String.format("Name,%s%n", playerName));
 
 			// Write skill data
-			for (Skill skill : Skill.values())
-			{
-				int level = client.getRealSkillLevel(skill);
-				writer.write(String.format("%s,%d%n", skill.getName(), level));
-			}
-
-			// Add XP values section at the end if enabled
-			if (config.includeXP()) {
-				writer.write(String.format("XP Data:%n"));
-
-				long totalXp = 0;
+			if(!config.includeXP()) {
 				for (Skill skill : Skill.values()) {
+					int level = client.getRealSkillLevel(skill);
 					int xp = client.getSkillExperience(skill);
-					totalXp += xp;
-					writer.write(String.format("%s,%d%n", skill.getName(), xp));
+					writer.write(String.format("%s,%d%n", skill.getName(), level));
 				}
-				writer.write(String.format("Total XP,%d%n", totalXp));
 			}
-
+			else
+			{
+				for (Skill skill : Skill.values()) {
+					int level = client.getRealSkillLevel(skill);
+					int xp = client.getSkillExperience(skill);
+					writer.write(String.format("%s,%d,%d%n", skill.getName(), level, xp));
+				}
+			}
 			// Notify the player
 			String clientMessage = String.format("Skill data exported successfully to: %s", outputFile.getAbsolutePath());
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", clientMessage, null);
