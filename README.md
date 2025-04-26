@@ -2,7 +2,7 @@
 Exports skill and XP data to a CSV file.
 
 ## Options
-- `Output Directory`: The output file path. Default is your home directory.
+- `Output Directory`: The output file path. Default is your runelite_directory\skill_data_exporter\.
 - `File Name`: The name of the output file NOT including .csv. Default is `skill_levels`.
 - `Include Timestamp`: Appends a timestamp to the filename automatically if enabled. Default is `off`
 - `Include XP`: Includes character's XP data when exporting. Default is `off`
